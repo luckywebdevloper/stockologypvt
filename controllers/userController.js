@@ -13,7 +13,7 @@ export const register = catchAsyncError(async (req, res, next) => {
   const { name, email, password } = req.body;
   const file = req.file;
 
-  if (!name || !email || !password || !file)
+  if (!name || !email || !password)
     return next(new ErrorHnadler("Please Enter All Field", 400));
   let user = await User.findOne({ email });
   if (user) return next(new ErrorHnadler("User Already Exist", 409));
