@@ -35,11 +35,11 @@ const schema = new mongoose.Schema({
   avatar: {
     public_id: {
       type: String,
-      required: true,
+     
     },
     url: {
       type: String,
-      required: true,
+    
     },
   },
   playlist: [
