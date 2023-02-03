@@ -11,13 +11,13 @@ import getDataUri from "../utils/dataUri.js";
 import { Stats } from "../models/Stats.js";
 export const register = catchAsyncError(async (req, res, next) => {
   const { name, email, password } = req.body;
-  const file = req.file;
+//   const file = req.file;
 
   if (!name || !email || !password)
     return next(new ErrorHnadler("Please Enter All Field", 400));
   let user = await User.findOne({ email });
   if (user) return next(new ErrorHnadler("User Already Exist", 409));
-  const fileUri = getDataUri(file);
+//   const fileUri = getDataUri(file);
 
 //   const mycloud = await cloudinary.v2.uploader.upload(fileUri.content);
   // Upload file on cloudinary;
@@ -30,7 +30,7 @@ export const register = catchAsyncError(async (req, res, next) => {
 //       url: mycloud.secure_url,
 //     },
 //   });
-  sendToken(res,"Registered Successfully", 201);
+  sendToken(res,user,"Registered Successfully", 201);
 });
 
 export const login = catchAsyncError(async (req, res, next) => {
