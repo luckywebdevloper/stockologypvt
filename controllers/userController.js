@@ -19,7 +19,7 @@ export const register = catchAsyncError(async (req, res, next) => {
   if (user) return next(new ErrorHnadler("User Already Exist", 409));
   const fileUri = getDataUri(file);
 
-  const mycloud = await cloudinary.v2.uploader.upload(fileUri.content);
+//   const mycloud = await cloudinary.v2.uploader.upload(fileUri.content);
   // Upload file on cloudinary;
 //   user = await User.create({
 //     name,
@@ -30,7 +30,7 @@ export const register = catchAsyncError(async (req, res, next) => {
 //       url: mycloud.secure_url,
 //     },
 //   });
-  sendToken(res, user, "Registered Successfully", 201);
+  sendToken(res,"Registered Successfully", 201);
 });
 
 export const login = catchAsyncError(async (req, res, next) => {
